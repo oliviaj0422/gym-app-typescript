@@ -1,84 +1,98 @@
 import Logo from "@/assets/Logo.png";
+import { FooterMenu } from "@/shared/types";
+import { title } from "process";
+import { useState } from "react";
+import FooterMenuButton from "./FooterMenuButton";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 {
   /* THIS FOOTER IS A RECREATION OF GOODLIFE WEBSITE'S FOOTER */
 }
 
+const footerMenus: Array<FooterMenu> = [
+  {
+    title: "MEMBERSHIP",
+    items: ["Join EvoGym", "Try EvoGym for free", "Log in to my account"],
+  },
+  {
+    title: "CLASSES & TRAINING",
+    items: ["Book a class", "Find a class", "Find training programs"],
+  },
+  {
+    title: "CLUBS",
+    items: ["Find a club", "Coming soon"],
+  },
+  {
+    title: "WOMEN",
+    items: [
+      "Find classes for women",
+      "Find training for women",
+      "Find clubs for women",
+    ],
+  },
+  {
+    title: "CAREERS",
+    items: ["Become a Trainer", "Become an Instructor", "Join our team"],
+  },
+  {
+    title: "EVOGYM",
+    items: ["About IgniteGym", "Contact Us", "FAQ"],
+  },
+];
+
 const Footer = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+
   return (
-    <footer className="py-16 bg-primary-100">
-      <div className="w-4/6 mx-auto">
+    <footer className="bg-primary-100 py-16">
+      <div className="mx-auto w-4/6">
         {/* Logo AND HEADER */}
         <div className="px-30 mt-10 flex flex-col items-start justify-center">
           <img className="my-5" alt="logo" src={Logo} />
-          <p className="text-base font-bold mb-3">LAND ACKNOWLEDGEMENT</p>
+          <p className="mb-3 text-base font-bold">HISTORY</p>
           <p>
-            EvoGym Fitness was founded on the traditional lands of the
-            Anishinaabek (Ah-nish-in-a-bek), Haudenosaunee (Ho-den-no-show-nee),
-            Lūnaapéewak (Len-ahpay- wuk) and Attawandaron (Add-a-won-da-run)
-            Peoples, on lands connected with the London Township and Sombra
-            Treaties of 1796 and the Dish with One Spoon Covenant Wampum. This
-            land, and the land on which all GoodLife Fitness Clubs operate,
-            continues to be home to diverse Indigenous Peoples (First Nations,
-            Inuit and Métis) whom we recognize as contemporary stewards of the
-            land and vital contributors of our society..
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
           </p>
           {/* CREATE A SECTION DIVIDER */}
-          <div className="border-primary-500 border-t-4 w-[150px] my-8 mx-auto" />
+          <div className="mx-auto my-8 w-[150px] border-t-4 border-primary-500" />
         </div>
+      </div>
 
+      <div className="mx-auto w-5/6">
         {/*  */}
-        <div className="my-8 flex flex-col md:flex-row justify-center md:justify-between gap-8 items-center">
-          <div className="flex flex-col items-center">
-            <button className="font-bold">MEMBERSHIP</button>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>Join EcoGym</p>
-              <p>Try GoodLife for free</p>
-              <p>Log in to my account</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <button className="font-bold">CLASSES & TRAINING</button>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>Book a class</p>
-              <p>Find a class</p>
-              <p>Find training programs</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <p className="font-bold">CLUBS</p>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>Find a club</p>
-              <p>Coming soon</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <p className="font-bold">WOMEN</p>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>Find classes for women</p>
-              <p>Find training for women</p>
-              <p>Find clubs for women</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <p className="font-bold">CAREERS</p>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>Become a Trainer</p>
-              <p>Become a Instructor</p>
-              <p>Join our team</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <p className="font-bold">GOODLIFE</p>
-            <div className="flex flex-col items-center text-sm gap-2 mt-3">
-              <p>About EvoGym</p>
-              <p>Contact Us</p>
-              <p>FAQ</p>
-            </div>
-          </div>
+        <div className="my-8 flex flex-col items-center justify-center gap-10 md:flex-row md:items-start md:justify-between">
+          {footerMenus.map((content: FooterMenu, index) =>
+            !isAboveMediumScreens ? (
+              <FooterMenuButton
+                key={`${content.title}-${index}`}
+                title={content.title}
+                items={content.items}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            ) : (
+              <div className="flex flex-col items-center">
+                <p className="font-bold">{content.title}</p>
+                <div className="mt-3 flex flex-col items-center gap-2 text-sm">
+                  {content.items.map((item) => (
+                    <p>{item}</p>
+                  ))}
+                </div>
+              </div>
+            ),
+          )}
         </div>
 
-        <div className="border-gray-100 w-full border-t-2 my-5" />
+        <div className="my-5 w-full border-t-2 border-gray-100" />
       </div>
     </footer>
   );

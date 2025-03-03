@@ -18,3 +18,8 @@ export interface ClassType {
   description: string;
   image: string;
 }
+
+export interface FooterMenu {
+  title: string;
+  items: string[];
+}
