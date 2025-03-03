@@ -38,7 +38,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <p className="font-bold">CLASSES & TRAINING</p>
+            <button className="font-bold">CLASSES & TRAINING</button>
             <div className="flex flex-col items-center text-sm gap-2 mt-3">
               <p>Book a class</p>
               <p>Find a class</p>
