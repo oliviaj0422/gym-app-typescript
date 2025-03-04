@@ -1,11 +1,12 @@
+import { useState } from "react";
+
 type Props = {
   title: string;
   items: string[];
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
 };
 
-const FooterMenuButton = ({ title, items, isOpen, setIsOpen }: Props) => {
+const FooterMenuButton = ({ title, items }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div className="flex flex-col items-center">
       <button onClick={() => setIsOpen(!isOpen)} className="font-bold">

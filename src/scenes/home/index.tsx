@@ -21,7 +21,7 @@ function Home({ setSelectedPage }: Props) {
       {/* IMAGE AND MAIN HEADER */}
       {/* we use motion.div here to jump to different sections after clicking on menu items */}
       <motion.div
-        className="md:flex mx-auto w-5/6 items-center justify-center md:h-5/6"
+        className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
         onViewportEnter={() => setSelectedPage(SelectedPage.HOME)}
       >
         {/* MAIN HEADER */}
@@ -40,8 +40,8 @@ function Home({ setSelectedPage }: Props) {
             }}
           >
             <div className="relative">
-              {/* before PLACES ELEMENT BEFORE THE PARENT ELEMENT */}
-              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
+              {/* "before" PLACES ELEMENT BEFORE THE PARENT ELEMENT */}
+              <div className="before:absolute before:-left-20 before:-top-20 before:z-[-1] md:before:content-evolvetext">
                 <img alt="home-page-text" src={HomePageText} />
               </div>
             </div>
@@ -78,11 +78,7 @@ function Home({ setSelectedPage }: Props) {
         </div>
 
         {/* IMAGE */}
-        <div
-          className="flex basis-3/5 justify-center md:z-10
-        md:ml-40 md:mt-16 md:justify-items-end
-        "
-        >
+        <div className="flex basis-3/5 justify-center md:z-10 md:ml-40 md:mt-16 md:justify-items-end">
           <img alt="home-pageGraphic" src={HomePageGraphic} />
         </div>
       </motion.div>
