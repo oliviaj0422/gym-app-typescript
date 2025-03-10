@@ -6,6 +6,8 @@ import Programs from "./scenes/programs";
 import OurClass from "./scenes/ourClass";
 import ContactUs from "./scenes/contactUs";
 import Footer from "./scenes/footer";
+import { BrowserRouter, Route, Routes } from "react-router";
+import SignIn from "./scenes/signIn";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -31,19 +33,31 @@ function App() {
   }, []);
 
   return (
-    <div className="app bg-gray-20">
-      <Navbar
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-        isTopOfPage={isTopOfPage}
-      />
+    <BrowserRouter>
+      <div className="app bg-gray-20">
+        <Navbar
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+          isTopOfPage={isTopOfPage}
+        />
 
-      <Home setSelectedPage={setSelectedPage} />
-      <Programs setSelectedPage={setSelectedPage} />
-      <OurClass setSelectedPage={setSelectedPage} />
-      <ContactUs setSelectedPage={setSelectedPage} />
-      <Footer />
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home setSelectedPage={setSelectedPage} />
+                <Programs setSelectedPage={setSelectedPage} />
+                <OurClass setSelectedPage={setSelectedPage} />
+                <ContactUs setSelectedPage={setSelectedPage} />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/sign-in" element={<SignIn />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 ``;

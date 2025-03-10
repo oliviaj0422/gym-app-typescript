@@ -1,5 +1,5 @@
 import { SelectedPage } from "@/shared/types";
-import React, { JSX } from "react";
+import { JSX } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
 
@@ -31,7 +31,7 @@ const Program = ({ icon, title, description, setSelectedPage }: Props) => {
       <AnchorLink
         className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
         onClick={() => setSelectedPage(SelectedPage.CONTACT_US)}
-        href={`${SelectedPage.CONTACT_US}`}
+        href={`#${SelectedPage.OUR_CLASSES}`}
       >
         LEARN MORE
       </AnchorLink>

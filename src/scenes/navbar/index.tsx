@@ -5,6 +5,7 @@ import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
+import { NavLink } from "react-router";
 
 type Props = {
   selectedPage: SelectedPage;
@@ -41,7 +42,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="BENEFITS"
+                    page="PROGRAMS"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
@@ -59,7 +60,9 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
 
                 {/* INNER RIGHT SIDE (SIGN IN, BECOME A MEMBER) */}
                 <div className={`${flexBetween} gap-8 text-sm font-bold`}>
-                  <p>SIGN IN</p>
+                  <NavLink className="hover:text-primary-300" to="/sign-in">
+                    SIGN IN
+                  </NavLink>
                   <ActionButton setSelectedPage={setSelectedPage}>
                     BECOME A MEMBER
                   </ActionButton>
@@ -79,7 +82,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+        <div className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
           {/* SET CLOSE ICON "X" TO CLOSE THE MENU */}
           <div className="flex justify-end p-12">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -95,7 +98,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="Benefits"
+              page="Programs"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />

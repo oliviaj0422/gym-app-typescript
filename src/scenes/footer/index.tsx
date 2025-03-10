@@ -1,6 +1,5 @@
 import Logo from "@/assets/Logo.png";
 import { FooterMenu } from "@/shared/types";
-import { useState } from "react";
 import FooterMenuButton from "./FooterMenuButton";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import FacebookIcon from "@/assets/facebook-app-symbol.png";
